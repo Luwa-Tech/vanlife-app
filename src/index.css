@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF7ED;
+    font-family: "Inter", sans-serif;
+}
+
+.nav {
+    @apply py-[1.3rem] px-[4rem]
+}
+
+.nav-ul {
+    @apply flex flex-row justify-between items-center
+}
+
+.nav-logo {
+    @apply text-[2rem] font-bold text-black uppercase 
+}
+
+.nav-ul_link__container {
+    @apply flex flex-row gap-7 text-[1rem] font-[600]
+}
+
+.nav-link-hover {
+    @apply hover:underline text-[900]
+}
+
+
+.background {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./src/assets/images/home-hero.png") no-repeat center center;
+    background-size: cover;
+    min-height: 30rem;
+    padding: 3rem 0;
+    display:flex;
+    justify-content: center;
+
+}
+
+.hero-container {
+    @apply flex gap-[50px] flex-col text-white w-[40%]
+}
+
+/* top:100vh */
+.footer {
+    @apply md:sticky bg-[#252525] p-[1.8rem] md:text-[#AAAAAA] md:right-0 md:left-0 text-center
+}
