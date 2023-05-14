@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react"
 
+
 const Vans = () => {
     const [vans, setVans] = React.useState([])
+
     React.useEffect(() => {
-        fetch("/api/vans")
-            .then(res => res.json())
-            .then(data => setVans(data.vans))
+        const fetchData = async () => {
+            setTimeout(async () => {
+                 const response = await fetch("/api/vans")
+                 const data = await response.json()
+        
+                 return data
+             }, 2000)
+        
+              console.log(data)
+           } 
+        
+           fetchData().catch(err => console.log(err))
     }, [])
 
     return <h1>Vans page goes here</h1>
