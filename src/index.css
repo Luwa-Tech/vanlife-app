@@ -49,7 +49,22 @@ html, body {
     @apply flex gap-[50px] flex-col text-white w-[40%]
 }
 
+.type-button {
+    @apply py-[10px] px-[20px] bg-[#FFEAD0] rounded-[5px] text-[1.3rem] mr-[30px] text-[#4D4D4D]
+}
+
 /* top:100vh */
 .footer {
-    @apply md:sticky bg-[#252525] p-[1.8rem] md:text-[#AAAAAA] md:right-0 md:left-0 text-center
+    @apply md:sticky top-[100vh] bg-[#252525] p-[1.8rem] md:text-[#AAAAAA] md:right-0 md:left-0 text-center 
+}
+
+.van-container {
+    @apply w-[60%] flex flex-col
+}
+
+.center-middle {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
