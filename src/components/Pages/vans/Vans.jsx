@@ -45,7 +45,7 @@ const Vans = () => {
             <Link to="?type=simple" className="type-button">Simple</Link>
             <Link to="?type=luxury" className="type-button">Luxury</Link>
             <Link to="?type=rugged" className="type-button">Rugged</Link>
-            <Link to="." className="underline text-bold text-[#4D4D4D] text-[1.3rem] cursor-pointer">Clear filters</Link>
+            {typeFilter && <Link to="." className="underline text-bold text-[#4D4D4D] text-[1.3rem] cursor-pointer">Clear filters</Link>}
         </section>
         <section className="flex flex-col items-center justify-center ">
         <div className="grid grid-cols-3  gapy-5 mb-[40px]">
