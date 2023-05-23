@@ -1,37 +1,15 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import { getVans } from "../../../ApiCall"
 
+export const loader = () => {
+    return getVans()
+}
+
 const HostVans = () => {
-    const [hostVans, setHostVans] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const hostVans = useLoaderData()
     console.log(hostVans)
-
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true)
-            try {
-                const data = await getVans()
-                setHostVans(data)
-            }catch(err) {
-                setError(err)
-            } finally{
-                setLoading(false)
-            }
-        }
-
-        fetchData()
-    }, [])
-
-    if(loading) {
-        return <h1>Loading data...</h1>
-    }
-
-    if(error) {
-        return <h1>There was an error: {error.message}</h1>
-    }
-
+ 
     return (
         <section className="mt-[40px]">
             <h1 className="text-2xl font-bold">Your listed vans</h1>

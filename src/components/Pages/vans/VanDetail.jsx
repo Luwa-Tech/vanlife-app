@@ -6,10 +6,9 @@ const VanDetail = () => {
     const [van, setVan] = useState(null)
 
     const locationState = useLocation()
-    const searchType = locationState.state.search
-    console.log(searchType)
+    const type = locationState.state?.type || "all"
+    const search = locationState.state?.search || ""
    
-
     useEffect(() => {
         fetch(`/api/vans/${params.id}`)
         .then(res => res.json())
@@ -18,8 +17,8 @@ const VanDetail = () => {
 
     return (
         <div className="px-[65px]">
-        <Link to="/vans">
-        <h1 className="font-bold underline">{searchType ? `← Back to ${searchType} Vans` : "← Back to all Vans"}</h1>
+        <Link to={`/vans/${search}`}>
+        <h1 className="font-bold underline">{type ? `← Back to ${type} Vans` : "← Back to all Vans"}</h1>
         </Link>
                 <section className="flex items-center justify-center flex-col mt-[20px]">
                 {
@@ -43,5 +42,3 @@ const VanDetail = () => {
 }
 
 export default VanDetail
-
-//image, name, type, description, price

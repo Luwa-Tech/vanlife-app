@@ -1,22 +1,15 @@
 import { useEffect, useState } from "react"
-import {Link, useSearchParams} from "react-router-dom"
+import {Link, useSearchParams, useLoaderData} from "react-router-dom"
+import { getVans } from "../../../ApiCall"
+
+export const loader = () => {
+    return getVans()
+}
 
 const Vans = () => {
-    const [vans, setVans] = useState([])
+    const vans = useLoaderData()
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type")
-    console.log(typeFilter)
-
-    useEffect(() => {
-        const fetchData = async () => {
-                 const response = await fetch("/api/vans")
-                 const data = await response.json()
-
-            setVans(data.vans)
-           } 
-        
-           fetchData().catch(err => console.log(err))
-    }, [])
 
     ///filter out vans based on user preference
     const filteredVans = typeFilter ?
@@ -26,7 +19,7 @@ const Vans = () => {
     const vansElements = filteredVans.map(van => {
         return (
             <div key={van.id} className="van-container">
-                <Link to={`/vans/${van.id}`} state={{search: typeFilter}}>
+                <Link to={`/vans/${van.id}`} state={{type: typeFilter, search: `?${searchParams.toString()}`}}>
                 <img className="mb-5 rounded-[10px]" src={van.imageUrl}/>
                     <div className="mb-2 flex flex-row justify-between">
                         <p className="text-[1.5rem] font-bold">{van.name}</p>

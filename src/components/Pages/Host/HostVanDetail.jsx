@@ -31,7 +31,6 @@ const HostVanDetail = () => {
                 <Link className="nav-link-hover" to="photos">Photos</Link>
             </nav>
             <Outlet context={van} />
-            {/* <h1>fixing error</h1> */}
         </main>
     )
 }
